@@ -52,9 +52,13 @@ public static class Extensions
         builder.Services.AddOpenTelemetry()
             .WithMetrics(metrics =>
             {
+                if (builder.Environment.IsEnvironment("Development") ||
+                !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")))
+            {
                 metrics.AddAspNetCoreInstrumentation()
-                    .AddHttpClientInstrumentation()
-                    .AddRuntimeInstrumentation();
+                       .AddHttpClientInstrumentation()
+                       .AddRuntimeInstrumentation();
+            }
             })
             .WithTracing(tracing =>
             {
