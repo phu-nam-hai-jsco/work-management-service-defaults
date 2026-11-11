@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NUnit.Framework;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using Shouldly;
 
-namespace QuanLyCongViec.Api.UnitTests.ServiceDefaults;
+namespace WorkManagement.ServiceDefaults.Tests;
 
 [TestFixture]
 public class ExtensionsTests
