@@ -3,16 +3,13 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.ServiceDiscovery;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 
 namespace Microsoft.Extensions.Hosting;
 
-// Adds common .NET Aspire services: service discovery, resilience, health checks, and OpenTelemetry.
-// This project should be referenced by each service project in your solution.
-// To learn more about using this project, see https://aka.ms/dotnet/aspire/service-defaults
+// Adds common service defaults: health checks (/health, /alive) and OpenTelemetry.
 public static class Extensions
 {
     public static TBuilder AddServiceDefaults<TBuilder>(this TBuilder builder) where TBuilder : IHostApplicationBuilder
@@ -20,23 +17,6 @@ public static class Extensions
         builder.ConfigureOpenTelemetry();
 
         builder.AddDefaultHealthChecks();
-
-        builder.Services.AddServiceDiscovery();
-
-        builder.Services.ConfigureHttpClientDefaults(http =>
-        {
-            // Turn on resilience by default
-            http.AddStandardResilienceHandler();
-
-            // Turn on service discovery by default
-            http.AddServiceDiscovery();
-        });
-
-        // Uncomment the following to restrict the allowed schemes for service discovery.
-        // builder.Services.Configure<ServiceDiscoveryOptions>(options =>
-        // {
-        //     options.AllowedSchemes = ["https"];
-        // });
 
         return builder;
     }

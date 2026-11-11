@@ -1,8 +1,7 @@
 # WorkManagement.ServiceDefaults
 
-Thư viện [.NET Aspire ServiceDefaults](https://learn.microsoft.com/dotnet/aspire/fundamentals/service-defaults)
-dùng chung cho **QuanLyCongViec**. Tách từ `server/ServiceDefaults` và `server/Tests/Api.UnitTests/ServiceDefaults`
-(giữ lịch sử commit).
+Thư viện cấu hình observability và health check dùng chung cho **QuanLyCongViec**
+(tách từ `server/ServiceDefaults` và `server/Tests/Api.UnitTests/ServiceDefaults`).
 
 ## API
 
@@ -14,7 +13,7 @@ builder.AddServiceDefaults();
 app.MapDefaultEndpoints(); // GET /health, GET /alive
 ```
 
-- `AddServiceDefaults`: cấu hình OpenTelemetry (logging, metrics, tracing + OTLP exporter khi có `OTEL_EXPORTER_OTLP_ENDPOINT`), default health checks (`self`, tag `live`), service discovery, và HTTP resilience mặc định.
+- `AddServiceDefaults`: cấu hình OpenTelemetry (logging, metrics, tracing + OTLP exporter khi có `OTEL_EXPORTER_OTLP_ENDPOINT`) và default health checks (`self`, tag `live`).
 - `ConfigureOpenTelemetry`, `AddDefaultHealthChecks`, `MapDefaultEndpoints`: có thể gọi tách riêng khi cần.
 
 ## Build cục bộ
