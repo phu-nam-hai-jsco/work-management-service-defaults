@@ -1,29 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <!--
-    WorkManagement.ServiceDefaults — thư viện .NET Aspire ServiceDefaults dùng chung cho các service của QuanLyCongViec:
-    service discovery, HTTP resilience, health checks (/health, /alive), và OpenTelemetry.
+    WorkManagement.ServiceDefaults — thư viện dùng chung cho các service của QuanLyCongViec:
+    health checks (/health, /alive) và OpenTelemetry.
   -->
 
   <PropertyGroup>
     <RootNamespace>WorkManagement.ServiceDefaults</RootNamespace>
     <AssemblyName>WorkManagement.ServiceDefaults</AssemblyName>
-    <NoWarn>NU1902</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
     <IsPackable>true</IsPackable>
     <PackageId>WorkManagement.ServiceDefaults</PackageId>
-    <Description>Aspire ServiceDefaults extensions for QuanLyCongViec: OpenTelemetry, HTTP resilience, service discovery, and default health check endpoints.</Description>
-    <PackageTags>aspire;servicedefaults;opentelemetry;resilience;quanlycongviec</PackageTags>
+    <Description>ServiceDefaults extensions for QuanLyCongViec: OpenTelemetry and default health check endpoints (/health, /alive).</Description>
+    <PackageTags>servicedefaults;opentelemetry;healthchecks;quanlycongviec</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
 
-    <PackageReference Include="Microsoft.Extensions.Http.Resilience" />
-    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
     <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />
